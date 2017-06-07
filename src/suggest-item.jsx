@@ -32,6 +32,7 @@ export default class SuggestItem extends React.Component {
    * @return {Function} The React element to render
    */
   render() {
+    const {label} = this.props.suggest;
     const classes = classnames(
       'geosuggest__item',
       this.props.className,
@@ -46,7 +47,10 @@ export default class SuggestItem extends React.Component {
       onMouseDown={this.props.onMouseDown}
       onMouseOut={this.props.onMouseOut}
       onClick={this.onClick}>
-        {this.props.suggest.label}
+        <span className="geosuggest__item-query">
+          {label.substr(0, label.indexOf(','))}
+        </span>
+        {label.substr(label.indexOf(',') + 1)}
     </li>;
   }
 }
